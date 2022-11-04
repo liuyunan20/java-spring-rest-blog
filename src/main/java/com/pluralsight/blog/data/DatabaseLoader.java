@@ -33,6 +33,14 @@ public class DatabaseLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        authors.addAll(Arrays.asList(
+                new Author("Sholderness", "Sarah", "Holderness", "password"),
+                new Author("tbell", "Tom", "Bell", "password"),
+                new Author("efisher", "Eric", "Fisher", "password"),
+                new Author("csouza", "Carlos", "Souza", "password")
+        ));
+        authorRepository.saveAll(authors);
+
         IntStream.range(0,40).forEach(i->{
             String template = templates[i % templates.length];
             String gadget = gadgets[i % gadgets.length];
